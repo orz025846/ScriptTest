@@ -9,15 +9,14 @@ public class Boss
     // ★mpを消費して魔法攻撃をするMagic関数
     public void Magic()
     {
-        this.mp -= 5;   // ★Magic関数内でmpを5減らす
-
-        // ★コンソールに「魔法攻撃をした。残りMPは〇〇。」と表示
-        // ★mpが足りない場合、「MPが足りないため魔法が使えない。」と表示
-        if ( mp > 5)
+        if ( mp >= 5)   // ★魔法が使えるか判定
         {
-            Debug.Log("魔法攻撃をした。残りMPは" + mp); 
+            this.mp -= 5;   // ★Magic関数内でmpを5減らす
+            // ★コンソールに「魔法攻撃をした。残りMPは〇〇。」と表示
+            Debug.Log("魔法攻撃をした。残りMPは" + mp);
         } else
         {
+            // ★mpが足りない場合、「MPが足りないため魔法が使えない。」と表示
             Debug.Log("MPが足りないため魔法が使えない");
         }
     }
@@ -37,7 +36,7 @@ public class Test : MonoBehaviour {
         }
 
         // 配列の各要素の値を逆順に表示
-        for (int s = 4; s >= 0; s--)
+        for (int s = array.Length - 1; s >= 0; s--)
         {
             Debug.Log(array[s]);
         }
@@ -46,7 +45,7 @@ public class Test : MonoBehaviour {
         Boss magicMaster = new Boss();
 
         // ★Magic関数を呼び出し、10回使用
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i <= 10; i++)
         {
             magicMaster.Magic();
         }
